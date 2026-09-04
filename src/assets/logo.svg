@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 150" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bridgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#082d34" />
+      <stop offset="100%" stop-color="#12454a" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c9469" />
+      <stop offset="100%" stop-color="#b8ca8d" />
+    </linearGradient>
+  </defs>
+
+  <!-- Bridge Icon Badge -->
+  <g transform="translate(10, 15)">
+    <!-- Shield/Badge Base -->
+    <rect x="0" y="0" width="120" height="120" rx="16" fill="url(#bridgeGrad)" />
+    <!-- Arch Bridge Silhouette -->
+    <path d="M 20 85 Q 60 30 100 85 L 100 95 L 85 95 L 85 75 Q 60 42 35 75 L 35 95 L 20 95 Z" fill="#f1f8dd" />
+    <!-- Pillars -->
+    <rect x="42" y="70" width="6" height="25" fill="#f1f8dd" opacity="0.9" />
+    <rect x="57" y="62" width="6" height="33" fill="#f1f8dd" opacity="0.9" />
+    <rect x="72" y="70" width="6" height="25" fill="#f1f8dd" opacity="0.9" />
+    <!-- Sunrise Arc -->
+    <circle cx="60" cy="55" r="14" fill="url(#accentGrad)" opacity="0.85" />
+    <!-- Setu Deck Highlight Line -->
+    <path d="M 15 85 Q 60 38 105 85" fill="none" stroke="#7c9469" stroke-width="4" stroke-linecap="round" />
+  </g>
+
+  <!-- Typography -->
+  <g transform="translate(150, 45)">
+    <!-- English & Devanagari Title -->
+    <text x="0" y="38" font-family="'Fraunces', Georgia, serif" font-size="44" font-weight="700" fill="#082d34" letter-spacing="-1">YojanaSetu</text>
+    <text x="245" y="38" font-family="'Noto Sans Devanagari', sans-serif" font-size="34" font-weight="600" fill="#7c9469">योजनासेतु</text>
+    <!-- Tagline -->
+    <text x="2" y="68" font-family="'DM Sans', sans-serif" font-size="16" font-weight="600" fill="#66736f" letter-spacing="1">FROM ELIGIBILITY TO APPLICATION</text>
+  </g>
+</svg>
