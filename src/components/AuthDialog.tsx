@@ -1,0 +1,12 @@
+import { useState, type FormEvent } from "react";
+import { useAuth } from "@/contexts/AuthContext";
+import { useI18n } from "@/i18n";
+
+export default function AuthDialog() {
+  const { authOpen, closeAuth, signIn, signUp } = useAuth();
+  const { t } = useI18n();
+  const [mode, setMode] = useState<"signIn" | "signUp">("signIn"); const [email, setEmail] = useState(""); const [password, setPassword] = useState(""); const [error, setError] = useState(""); const [submitting, setSubmitting] = useState(false);
+  if (!authOpen) return null;
+  async function submit(event: FormEvent) { event.preventDefault(); setError(""); setSubmitting(true); try { if (mode === "signIn") await signIn({ email, password }); else await signUp({ email, password }); closeAuth(); } catch (cause) { setError(cause instanceof Error ? cause.message : t("authError")); } finally { setSubmitting(false); } }
+  return <div className="fixed inset-0 z-50 grid place-items-center bg-[#082d34]/60 p-4" role="dialog" aria-modal="true" aria-labelledby="auth-title"><form onSubmit={submit} className="w-full max-w-md border-2 border-[#082d34] bg-[#fffdf7] p-6 shadow-xl"><h2 id="auth-title" className="font-display text-3xl text-[#082d34]">{mode === "signIn" ? t("signInTitle") : t("createAccountTitle")}</h2><p className="mt-3 text-sm leading-6 text-[#52605d]">{t("authCopy")}</p><label className="mt-5 grid gap-2 font-bold text-[#082d34]">{t("email")}<input className="form-control" autoComplete="email" type="email" required value={email} onChange={(event) => setEmail(event.target.value)} /></label><label className="mt-4 grid gap-2 font-bold text-[#082d34]">{t("password")}<input className="form-control" autoComplete={mode === "signIn" ? "current-password" : "new-password"} type="password" required minLength={6} value={password} onChange={(event) => setPassword(event.target.value)} /></label>{error && <p className="mt-4 text-sm font-bold text-[#9e4a46]" role="alert">{error}</p>}<div className="mt-6 flex flex-wrap gap-3"><button className="btn btn-primary" disabled={submitting}>{submitting ? t("pleaseWait") : mode === "signIn" ? t("signIn") : t("createAccount")}</button><button type="button" className="btn btn-quiet" onClick={() => setMode(mode === "signIn" ? "signUp" : "signIn")}>{mode === "signIn" ? t("createAccount") : t("useSignIn")}</button><button type="button" className="btn btn-quiet" onClick={closeAuth}>{t("cancel")}</button></div></form></div>;
+}
