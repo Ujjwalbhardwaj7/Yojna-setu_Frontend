@@ -1,37 +1,132 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 150" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 140" width="100%" height="100%">
   <defs>
-    <linearGradient id="bridgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#082d34" />
-      <stop offset="100%" stop-color="#12454a" />
+    <!-- Sun/glow gradient behind arch -->
+    <radialGradient id="sunGlow" cx="50%" cy="38%" r="50%">
+      <stop offset="0%" stop-color="#d8e8a0" stop-opacity="1"/>
+      <stop offset="60%" stop-color="#b8cc78" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#8fad52" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Outer circle fill -->
+    <radialGradient id="circleBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f5f9e8"/>
+      <stop offset="100%" stop-color="#e8f0d0"/>
+    </radialGradient>
+    <!-- Path/road gradient -->
+    <linearGradient id="pathGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c5d98a"/>
+      <stop offset="100%" stop-color="#8fad52"/>
     </linearGradient>
-    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#7c9469" />
-      <stop offset="100%" stop-color="#b8ca8d" />
+    <!-- Bridge dark green -->
+    <linearGradient id="bridgeDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d5a3d"/>
+      <stop offset="100%" stop-color="#1e3d28"/>
     </linearGradient>
   </defs>
 
-  <!-- Bridge Icon Badge -->
-  <g transform="translate(10, 15)">
-    <!-- Shield/Badge Base -->
-    <rect x="0" y="0" width="120" height="120" rx="16" fill="url(#bridgeGrad)" />
-    <!-- Arch Bridge Silhouette -->
-    <path d="M 20 85 Q 60 30 100 85 L 100 95 L 85 95 L 85 75 Q 60 42 35 75 L 35 95 L 20 95 Z" fill="#f1f8dd" />
-    <!-- Pillars -->
-    <rect x="42" y="70" width="6" height="25" fill="#f1f8dd" opacity="0.9" />
-    <rect x="57" y="62" width="6" height="33" fill="#f1f8dd" opacity="0.9" />
-    <rect x="72" y="70" width="6" height="25" fill="#f1f8dd" opacity="0.9" />
-    <!-- Sunrise Arc -->
-    <circle cx="60" cy="55" r="14" fill="url(#accentGrad)" opacity="0.85" />
-    <!-- Setu Deck Highlight Line -->
-    <path d="M 15 85 Q 60 38 105 85" fill="none" stroke="#7c9469" stroke-width="4" stroke-linecap="round" />
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  CIRCULAR EMBLEM  (centre ~70, 70, r=65)   -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- Outer circle background -->
+  <circle cx="70" cy="70" r="65" fill="url(#circleBg)" stroke="#b8cc78" stroke-width="1.5"/>
+
+  <!-- Sun glow disk -->
+  <circle cx="70" cy="52" r="36" fill="url(#sunGlow)"/>
+
+  <!-- Sun rays (radiating lines from top of bridge arch) -->
+  <g stroke="#c8d870" stroke-width="2" stroke-linecap="round" opacity="0.85">
+    <!-- Centre ray -->
+    <line x1="70" y1="28" x2="70" y2="14"/>
+    <!-- Left rays -->
+    <line x1="70" y1="28" x2="58" y2="16"/>
+    <line x1="70" y1="28" x2="47" y2="20"/>
+    <line x1="70" y1="28" x2="40" y2="28"/>
+    <line x1="70" y1="28" x2="35" y2="38"/>
+    <!-- Right rays -->
+    <line x1="70" y1="28" x2="82" y2="16"/>
+    <line x1="70" y1="28" x2="93" y2="20"/>
+    <line x1="70" y1="28" x2="100" y2="28"/>
+    <line x1="70" y1="28" x2="105" y2="38"/>
   </g>
 
-  <!-- Typography -->
-  <g transform="translate(150, 45)">
-    <!-- English & Devanagari Title -->
-    <text x="0" y="38" font-family="'Fraunces', Georgia, serif" font-size="44" font-weight="700" fill="#082d34" letter-spacing="-1">YojanaSetu</text>
-    <text x="245" y="38" font-family="'Noto Sans Devanagari', sans-serif" font-size="34" font-weight="600" fill="#7c9469">योजनासेतु</text>
-    <!-- Tagline -->
-    <text x="2" y="68" font-family="'DM Sans', sans-serif" font-size="16" font-weight="600" fill="#66736f" letter-spacing="1">FROM ELIGIBILITY TO APPLICATION</text>
+  <!-- Winding path / road (S-curve at bottom of circle) -->
+  <path d="M 28 125 Q 50 100 70 108 Q 90 116 108 95 L 112 100 Q 92 122 70 114 Q 50 106 25 130 Z"
+        fill="url(#pathGrad)" opacity="0.75"/>
+
+  <!-- Ground hill / grass mound under bridge -->
+  <ellipse cx="70" cy="112" rx="52" ry="14" fill="#7aaa56" opacity="0.45"/>
+
+  <!-- ── BRIDGE ── -->
+  <!-- Bridge arch silhouette (dark green) -->
+  <path d="M 22 92 Q 70 42 118 92"
+        fill="none" stroke="#2d5a3d" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Bridge deck (horizontal bar) -->
+  <rect x="20" y="88" width="100" height="8" rx="2" fill="#2d5a3d"/>
+
+  <!-- Left vertical pillar -->
+  <rect x="22" y="88" width="8" height="32" rx="1" fill="#1e3d28"/>
+  <!-- Right vertical pillar -->
+  <rect x="110" y="88" width="8" height="32" rx="1" fill="#1e3d28"/>
+
+  <!-- ── TWO PEOPLE silhouettes standing on bridge ── -->
+  <!-- Person left -->
+  <g fill="#1e3d28">
+    <!-- head -->
+    <circle cx="60" cy="76" r="5"/>
+    <!-- body -->
+    <path d="M 57 81 Q 55 88 54 95 L 57 95 L 60 88 L 63 95 L 66 95 Q 65 88 63 81 Z"/>
   </g>
+  <!-- Person right (slightly taller / adult) -->
+  <g fill="#1e3d28">
+    <!-- head -->
+    <circle cx="80" cy="74" r="5.5"/>
+    <!-- body -->
+    <path d="M 77 79 Q 75 87 74 95 L 77 95 L 80 87 L 83 95 L 86 95 Q 85 87 83 79 Z"/>
+  </g>
+
+  <!-- Leaf accent (bottom-left of circle) -->
+  <g transform="translate(30,105) rotate(-30)">
+    <ellipse cx="0" cy="0" rx="8" ry="5" fill="#5a9642"/>
+    <line x1="-7" y1="0" x2="7" y2="0" stroke="#4a7a34" stroke-width="1" stroke-linecap="round"/>
+  </g>
+
+  <!-- Outer circle border (on top for crispness) -->
+  <circle cx="70" cy="70" r="65" fill="none" stroke="#9ab85c" stroke-width="2"/>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!--  WORDMARK                                   -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <!-- "Yojana" in dark green, "Setu" in bright green -->
+  <text x="152" y="68"
+        font-family="'Fraunces', Georgia, 'Times New Roman', serif"
+        font-size="52"
+        font-weight="700"
+        fill="#1a3d28"
+        letter-spacing="-1">Yojana</text>
+
+  <!-- Measure "Yojana" width at font-size 52 ≈ 175px at letter-spacing -1 -->
+  <text x="326" y="68"
+        font-family="'Fraunces', Georgia, 'Times New Roman', serif"
+        font-size="52"
+        font-weight="700"
+        fill="#4e8c2f"
+        letter-spacing="-1">Setu</text>
+
+  <!-- Leaf dot over the "i" in Setu (stylistic accent) -->
+  <ellipse cx="381" cy="19" rx="5" ry="7" fill="#5aa030" transform="rotate(-15 381 19)"/>
+
+  <!-- Tagline with decorative rules -->
+  <!-- Left rule -->
+  <line x1="152" y1="92" x2="183" y2="92" stroke="#5aa030" stroke-width="1.5"/>
+  <!-- Tagline text -->
+  <text x="188" y="96"
+        font-family="'DM Sans', 'Helvetica Neue', Arial, sans-serif"
+        font-size="13.5"
+        font-weight="500"
+        fill="#4e6e3a"
+        letter-spacing="0.5">From Eligibility to Application</text>
+  <!-- Right rule -->
+  <line x1="418" y1="92" x2="450" y2="92" stroke="#5aa030" stroke-width="1.5"/>
 </svg>

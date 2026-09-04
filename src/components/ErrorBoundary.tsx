@@ -1,6 +1,9 @@
 import { cn } from "@/lib/utils";
 import { AlertTriangle, RotateCcw } from "lucide-react";
 import { Component, type ReactNode } from "react";
+import i18n from "@/i18n/config";
+import en from "@/i18n/en";
+import hi from "@/i18n/hi";
 
 interface Props {
   children: ReactNode;
@@ -22,6 +25,7 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   render() {
+    const dictionary = i18n.language?.startsWith("hi") ? hi : en;
     if (this.state.hasError) {
       return (
         <div className="flex items-center justify-center min-h-screen p-8 bg-background">
@@ -31,7 +35,7 @@ class ErrorBoundary extends Component<Props, State> {
               className="text-destructive mb-6 flex-shrink-0"
             />
 
-            <h2 className="text-xl mb-4">An unexpected error occurred.</h2>
+            <h2 className="text-xl mb-4">{dictionary.unexpectedError}</h2>
 
             <div className="p-4 w-full rounded bg-muted overflow-auto mb-6">
               <pre className="text-sm text-muted-foreground whitespace-break-spaces">
@@ -48,7 +52,7 @@ class ErrorBoundary extends Component<Props, State> {
               )}
             >
               <RotateCcw size={16} />
-              Reload Page
+              {dictionary.reloadPage}
             </button>
           </div>
         </div>
