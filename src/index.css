@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,650&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* YojanaSetu / Civic Editorial: use Roof Tile Green for civic confidence, Lemon Sugar for humane warmth, and typography-led hierarchy instead of card-heavy decoration. */
+:root {
+  --background: #f7f3e9;
+  --foreground: #112126;
+  --card: #fffdf7;
+  --card-foreground: #112126;
+  --primary: #082d34;
+  --primary-foreground: #f1f8dd;
+  --secondary: #e9eadb;
+  --secondary-foreground: #082d34;
+  --muted: #ebe8dd;
+  --muted-foreground: #66736f;
+  --accent: #f1f8dd;
+  --accent-foreground: #082d34;
+  --border: #d9d7ca;
+  --input: #d9d7ca;
+  --ring: #b4c96e;
+  --radius: 0.18rem;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@theme inline {
+  --font-display: 'Fraunces', 'Noto Sans Devanagari', Georgia, serif;
+  --font-sans: 'DM Sans', 'Noto Sans Devanagari', ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+}
+
+* { box-sizing: border-box; border-color: var(--border); }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-sans); }
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+button:active { transform: scale(.985); }
+::selection { background: #cfe19a; color: #082d34; }
+
+@layer components {
+  .site-shell { min-height: 100vh; overflow: hidden; }
+  .container { width: min(1180px, calc(100% - 48px)); margin-inline: auto; }
+  .display { font-family: var(--font-display); letter-spacing: -.045em; line-height: .98; }
+  .eyebrow { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 700; color: #66736f; }
+  .hairline { border-top: 1px solid var(--border); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .65rem; min-height: 48px; padding: .75rem 1.1rem; border: 1px solid transparent; border-radius: 2px; font-weight: 700; transition: transform .16s var(--ease-out), background .18s var(--ease-out), color .18s var(--ease-out), border-color .18s var(--ease-out); }
+  .btn-primary { background: var(--primary); color: var(--primary-foreground); }
+  .btn-primary:hover { background: #12454a; transform: translateY(-2px); }
+  .btn-quiet { background: transparent; border-color: #aab5ad; color: var(--primary); }
+  .btn-quiet:hover { background: var(--accent); border-color: var(--primary); transform: translateY(-2px); }
+  .bridge-mini { position: relative; display: inline-block; width: 31px; height: 15px; border-bottom: 2px solid #7c9469; }
+  .bridge-mini::before, .bridge-mini::after { content: ''; position: absolute; top: 1px; width: 10px; height: 10px; border-top: 2px solid #7c9469; }
+  .bridge-mini::before { left: 1px; border-left: 2px solid #7c9469; }
+  .bridge-mini::after { right: 1px; border-right: 2px solid #7c9469; }
+  .rule-label { display: flex; align-items: center; gap: .8rem; color: #66736f; font-size: .73rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
+  .rule-label::after { content: ''; width: 42px; border-top: 1px solid #aab5ad; }
+  .hero-ecosystem { position: absolute; inset: 0 0 112px; pointer-events: none; }
+  .depth-tile { position: absolute; display: flex; align-items: center; gap: .45rem; min-width: 86px; padding: .55rem .65rem; background: #f1f8dd; color: #082d34; border: 1px solid rgba(8,45,52,.22); box-shadow: 8px 10px 0 rgba(8,45,52,.14); font-size: .68rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; transform: rotate(-3deg); transition: transform .22s var(--ease-out); }
+  .depth-tile:hover { transform: rotate(0deg) translateY(-3px); }
+  .depth-glyph { display: grid; place-items: center; width: 22px; height: 22px; background: #082d34; color: #f1f8dd; font-family: Georgia, serif; font-size: .95rem; }
+  .depth-search { left: 12%; top: 33%; }
+  .depth-card { right: 13%; top: 27%; transform: rotate(4deg); }
+  .depth-doc { left: 42%; bottom: 12%; transform: rotate(2deg); }
+  .depth-connector { position: absolute; height: 1px; width: 22%; background: #f1f8dd; opacity: .8; transform-origin: left center; }
+  .depth-connector-one { left: 28%; top: 41%; transform: rotate(-21deg); }
+  .depth-connector-two { left: 49%; top: 49%; width: 17%; transform: rotate(76deg); }
+  .scheme-marker { display: inline-grid; place-items: center; width: 26px; height: 26px; margin-right: .55rem; border: 1px solid #aab5ad; color: #527044; font-family: Georgia, serif; font-size: 1.05rem; vertical-align: middle; }
+  .depth-panel { box-shadow: 8px 8px 0 rgba(8,45,52,.08); }
+  .lift { transition: transform .22s var(--ease-out), border-color .22s var(--ease-out), background .22s var(--ease-out); }
+  .lift:hover { transform: translateY(-3px); border-color: #819a85; }
+}
+
+@media (max-width: 700px) {
+  .container { width: min(100% - 32px, 560px); }
+  .hero-ecosystem { inset: 0 0 122px; opacity: .88; }
+  .depth-tile { min-width: 72px; padding: .4rem; font-size: .58rem; box-shadow: 4px 5px 0 rgba(8,45,52,.14); }
+  .depth-glyph { width: 18px; height: 18px; font-size: .75rem; }
+  .depth-search { left: 8%; top: 28%; }
+  .depth-card { right: 8%; top: 24%; }
+  .depth-doc { left: 38%; bottom: 9%; }
+  .depth-connector { opacity: .55; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depth-tile { transition: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { animation: rise .65s var(--ease-out) both; }
+.delay-1 { animation-delay: .08s; } .delay-2 { animation-delay: .16s; } .delay-3 { animation-delay: .24s; }
+
+/* YojanaSetu / SplashScreen: a short product-opening moment, not a loading screen. */
+.splash-screen { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: #f1f8dd; color: #082d34; }
+.splash-lockup { display: flex; width: min(88vw, 420px); flex-direction: column; align-items: center; text-align: center; }
+.splash-icon { width: clamp(92px, 28vw, 168px); height: auto; aspect-ratio: 1; object-fit: contain; opacity: 0; animation: splash-icon-in .55s var(--ease-out) .08s forwards; }
+.splash-wordmark { margin-top: 1.15rem; font-family: var(--font-display); font-size: clamp(2.15rem, 8vw, 3.65rem); letter-spacing: -.055em; line-height: .95; opacity: 0; animation: splash-wordmark-in .45s var(--ease-out) .38s forwards; }
+.splash-wordmark span { font-style: italic; }
+.splash-lockup p { margin: 1rem 0 0; font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: #527044; opacity: 0; animation: splash-tagline-in .4s var(--ease-out) .64s forwards; }
+@keyframes splash-icon-in { from { opacity: 0; transform: scale(.94); } to { opacity: 1; transform: scale(1); } }
+@keyframes splash-wordmark-in { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes splash-tagline-in { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .splash-icon, .splash-wordmark, .splash-lockup p { animation: none; opacity: 1; } }
+
+/* YojanaSetu / Reference logo: use one authoritative horizontal lockup on splash, navbar, and footer. */
+.splash-full-logo { width: min(84vw, 720px); height: auto; display: block; opacity: 0; animation: splash-logo-in .62s var(--ease-out) .08s forwards; }
+@keyframes splash-logo-in { from { opacity: 0; transform: translateY(7px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (max-width: 520px) { .splash-full-logo { width: min(88vw, 360px); } }
+@media (prefers-reduced-motion: reduce) { .splash-full-logo { animation: none; opacity: 1; } }
