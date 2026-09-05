@@ -194,6 +194,8 @@ const en = {
   microphoneUnavailable: "Microphone unavailable",
   listening: "Listening",
   permissionDenied: "Permission denied",
+  processing: "Processing…",
+  voiceFailed: "Voice search could not understand the audio.",
 
   pageNotFound: "Page not found",
   returnHome: "Return home",

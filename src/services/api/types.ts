@@ -170,3 +170,7 @@ export class M3SearchUnavailableError extends Error {
     this.name = "M3SearchUnavailableError";
   }
 }
+
+/** Speech-to-text capability flags returned by the backend at /search/config. */
+export interface TranscriptionConfig { server_stt_configured: boolean; }
+export interface TranscriptionResponse { text: string; }

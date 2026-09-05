@@ -21,7 +21,7 @@ const hi: Record<keyof typeof en, string> = {
 
   signInTitle: "साइन इन", createAccountTitle: "खाता बनाएँ", authCopy: "आपका सत्र Supabase Auth के माध्यम से सुरक्षित रूप से प्रबंधित होता है।", email: "ईमेल", password: "पासवर्ड", authError: "प्रमाणीकरण पूरा नहीं हो सका।", pleaseWait: "कृपया प्रतीक्षा करें…", createAccount: "खाता बनाएँ", useSignIn: "साइन इन करें", cancel: "रद्द करें",
 
-  microphoneUse: "माइक्रोफ़ोन इस्तेमाल करें", microphoneStop: "माइक्रोफ़ोन बंद करें", microphoneDenied: "माइक्रोफ़ोन की अनुमति नहीं मिली", microphoneUnavailable: "माइक्रोफ़ोन उपलब्ध नहीं है", listening: "सुन रहा है", permissionDenied: "अनुमति नहीं मिली",
+  microphoneUse: "माइक्रोफ़ोन इस्तेमाल करें", microphoneStop: "माइक्रोफ़ोन बंद करें", microphoneDenied: "माइक्रोफ़ोन की अनुमति नहीं मिली", microphoneUnavailable: "माइक्रोफ़ोन उपलब्ध नहीं है", listening: "सुन रहा है", permissionDenied: "अनुमति नहीं मिली", processing: "प्रक्रिया जारी है…", voiceFailed: "आवाज़ समझी नहीं जा सकी।",
 
   pageNotFound: "पृष्ठ नहीं मिला", returnHome: "मुख्य पृष्ठ पर जाएँ", unexpectedError: "एक अनपेक्षित त्रुटि हुई है।", reloadPage: "पृष्ठ फिर से लोड करें",
 

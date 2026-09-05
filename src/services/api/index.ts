@@ -4,7 +4,7 @@ import type {
   AuthenticatedUser, CitizenProfile, EligibilityRequest, EligibilityResponse, HealthResponse,
   M2RecommendationResponse, PaginatedSchemes, ProfileCreateRequest, ProfileUpdateRequest,
   RecommendationRequest, RecommendationResponse, SchemeDetail, SchemeListParams, SchemeSummary,
-  SchemeDocuments, SchemeTutorial,
+  SchemeDocuments, SchemeSearchResponse, SchemeTutorial, TranscriptionConfig, TranscriptionResponse,
 } from "./types";
 
 const API_PREFIX = "/api/v1";
@@ -43,6 +43,22 @@ export async function getScheme(schemeId: string): Promise<SchemeDetail> {
 
 export async function checkEligibility(request: EligibilityRequest): Promise<EligibilityResponse> {
   return (await apiClient.post<EligibilityResponse>(`${API_PREFIX}/eligibility/check`, request)).data;
+}
+
+export async function searchSchemes(query: string): Promise<SchemeSearchResponse> {
+  return (await apiClient.get<SchemeSearchResponse>(`${API_PREFIX}/search`, {
+    params: { q: query },
+  })).data;
+}
+
+export async function getTranscriptionConfig(): Promise<TranscriptionConfig> {
+  return (await apiClient.get<TranscriptionConfig>(`${API_PREFIX}/search/config`)).data;
+}
+
+export async function transcribeAudio(audio: Blob): Promise<TranscriptionResponse> {
+  const form = new FormData();
+  form.append("audio", audio, "audio.webm");
+  return (await apiClient.post<TranscriptionResponse>(`${API_PREFIX}/search/transcribe`, form)).data;
 }
 
 export async function getSchemeDocs(schemeId: string): Promise<SchemeDocuments> {

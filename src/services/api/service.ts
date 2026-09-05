@@ -1,7 +1,6 @@
 /** Single component-facing service surface. Real M2 is the default adapter. */
 import * as mock from "./mock";
 import * as api from "./index";
-import { M3SearchUnavailableError, type SchemeSearchResponse } from "./types";
 
 export const USE_MOCK = (import.meta.env.VITE_USE_MOCK_DATA as string | undefined) === "true";
 const adapter = USE_MOCK ? mock : api;
@@ -20,12 +19,9 @@ export const getDocuments = adapter.getDocuments;
 export const getSchemeTutorial = adapter.getSchemeTutorial;
 export const getTutorial = adapter.getTutorial;
 export const recommendSchemes = adapter.recommendSchemes;
-
-/** M3 owns semantic retrieval. Only mock development mode returns search fixtures. */
-export async function searchSchemes(query: string): Promise<SchemeSearchResponse> {
-  if (USE_MOCK) return mock.searchSchemes(query);
-  throw new M3SearchUnavailableError();
-}
+export const searchSchemes = adapter.searchSchemes;
+export const getTranscriptionConfig = adapter.getTranscriptionConfig;
+export const transcribeAudio = adapter.transcribeAudio;
 
 export type {
   ApiError, AuthenticatedUser, CitizenProfile, DocumentItem, EligibilityProfileSnapshot,

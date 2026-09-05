@@ -23,3 +23,5 @@ export async function getSchemeTutorial(schemeId: string) { await delay(); retur
 export const getTutorial = getSchemeTutorial;
 export async function recommendSchemes(_request: RecommendationRequest) { await delay(); return mockRecommendations; }
 export async function searchSchemes(_query: string) { await delay(); return mockSearch; }
+export async function getTranscriptionConfig() { await delay(30); return { server_stt_configured: false }; }
+export async function transcribeAudio(_audio: Blob) { await delay(300); return { text: "pension for senior citizens" }; }
